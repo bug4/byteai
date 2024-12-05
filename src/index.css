@@ -33,6 +33,15 @@ body {
   }
 }
 
+@keyframes soundbar {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 32px;
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 2s ease-in;
 }
