@@ -74,7 +74,7 @@ function App() {
 
       {/* Spline Scene */}
       <spline-viewer 
-        url="https://prod.spline.design/6FbqRO0O-wdz4vYF/scene.splinecode"
+        url="https://prod.spline.design/XDB7SmWGeOQth8sz/scene.splinecode"
         style={{ width: '100%', height: '100%' }}
       />
       
