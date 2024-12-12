@@ -126,7 +126,7 @@ function App() {
       {/* Main Action Buttons */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
         <button 
-          onClick={() => window.open('https://pump.fun/board', '_blank')}
+          onClick={() => window.open('https://pump.fun/coin/AdL3KhnVnw2JBhmDoPVDd44uXpJnmqNysP2MsxAypump', '_blank')}
           className="group relative px-8 py-3 overflow-hidden rounded-lg font-orbitron font-medium"
         >
           <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all"></div>
@@ -265,7 +265,7 @@ function App() {
         onClose={() => setShowComingSoon(false)} 
       />
     </div>
-  );
+  );  
 }
 
 export default App;
