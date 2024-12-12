@@ -140,68 +140,59 @@ function App() {
   return (
     <div className="relative w-screen h-screen bg-black overflow-hidden">
       {/* Title Section */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-center w-full px-4">
-        <h1 className="font-orbitron text-7xl font-bold text-cyan-400 mb-2
-                     animate-pulse
-                     drop-shadow-[0_0_10px_rgba(34,211,238,0.3)]
-                     hover:drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]
-                     transition-all duration-300"
-        >
-          BYTE
-        </h1>
-        <p className="font-orbitron text-sm text-cyan-300/80 max-w-2xl mx-auto
-                    animate-fadeIn
-                    drop-shadow-[0_0_8px_rgba(34,211,238,0.2)]"
-        >
-          Binary Yield Trading Engine - Your quantum-powered AI companion in the Solana ecosystem
-        </p>
-      </div>
+<div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 text-center w-full px-4">
+  <h1 className="font-orbitron text-8xl font-bold mb-4
+                 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text
+                 animate-pulse
+                 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]
+                 hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.6)]
+                 transition-all duration-300"
+  >
+    BYTE
+  </h1>
+  <p className="font-orbitron text-lg text-cyan-300/90 max-w-3xl mx-auto
+              backdrop-blur-sm py-2 px-4 rounded-lg
+              bg-black/20 border-2 border-cyan-500/30
+              animate-fadeIn
+              drop-shadow-[0_0_12px_rgba(34,211,238,0.3)]"
+  >
+    Binary Yield Trading Engine - Your quantum-powered AI companion in the Solana ecosystem
+  </p>
+</div>
 
       {/* Spline Scene */}
       <spline-viewer 
         url="https://prod.spline.design/Dt6sETE-FruYyOwD/scene.splinecode"
         className="w-full h-full"
       />
-      
-      {/* Social Links */}
-      <div className="fixed right-4 top-1/4 flex flex-col gap-4 z-20">
-        <a 
-          href="https://x.com/ByteAI" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center justify-center w-14 h-14 rounded-lg 
-                   bg-black/20 border-2 border-cyan-500/30
-                   hover:border-cyan-400/60 hover:bg-cyan-400/10
-                   transition-all duration-300"
-        >
-          <svg className="w-7 h-7 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-        </a>
-        <a 
-          href="https://t.me/ByteAI" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center justify-center w-14 h-14 rounded-lg 
-                   bg-black/20 border-2 border-cyan-500/30
-                   hover:border-cyan-400/60 hover:bg-cyan-400/10
-                   transition-all duration-300"
-        >
-          <svg className="w-7 h-7 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.219-.548.219l.18-2.935 5.36-4.82c.23-.23-.054-.349-.354-.14l-6.627 4.174-2.853-.892c-.62-.196-.632-.62.129-.913l11.447-4.407c.52-.196.97.126.766.742z"/>
-          </svg>
-        </a>
-      </div>
 
-      {/* Live Trading Button */}
-      <div className="absolute top-4 right-4 z-50">
-        <CyberButton 
-          variant="outline"
-          onClick={() => setShowComingSoon(true)}
-        >
-          Live Trading
-        </CyberButton>
-      </div>
+      {/* Header Buttons */}
+<div className="absolute top-4 right-4 z-50 flex items-center gap-4">
+  <a 
+    href="https://x.com/ByteSolanaAI" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="flex items-center justify-center px-6 py-3 rounded-lg 
+             bg-black/40 border-2 border-cyan-500/50 
+             hover:border-cyan-400 hover:bg-cyan-950/30
+             transition-all duration-300
+             backdrop-blur-sm
+             shadow-[0_0_10px_rgba(34,211,238,0.2)]
+             hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]
+             font-orbitron"
+  >
+    <svg className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+  </a>
+  
+  <CyberButton 
+    variant="outline"
+    onClick={() => setShowComingSoon(true)}
+  >
+    Live Trading
+  </CyberButton>
+</div>
 
       {/* Main Action Buttons */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-50">
