@@ -1,20 +1,73 @@
 import { useState } from 'react';
 
+// CyberButton Component
+const CyberButton = ({ children, onClick, variant = 'default', className = '' }) => {
+  const baseStyles = `
+    group relative px-6 py-3 
+    overflow-hidden rounded-lg 
+    font-orbitron 
+    transition-all duration-300
+    backdrop-blur-sm
+    shadow-[0_0_10px_rgba(34,211,238,0.2)]
+    hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]
+  `;
+  
+  const variants = {
+    default: `
+      ${baseStyles}
+      bg-black/40
+      border-2 border-cyan-500/50 
+      hover:border-cyan-400 
+      hover:bg-cyan-950/30
+    `,
+    primary: `
+      ${baseStyles}
+      bg-gradient-to-r from-cyan-600/90 to-blue-600/90
+      hover:from-cyan-500/90 hover:to-blue-500/90
+      border-2 border-cyan-400/50
+      hover:border-cyan-300
+    `,
+    outline: `
+      ${baseStyles}
+      bg-black/40 
+      border-2 border-cyan-500/50
+      hover:border-cyan-400
+      hover:bg-cyan-950/30
+    `
+  };
+
+  return (
+    <button 
+      onClick={onClick} 
+      className={`${variants[variant]} ${className}`}
+    >
+      <div className="absolute inset-0 w-0 bg-cyan-400/10 transition-all duration-300 ease-out group-hover:w-full"/>
+      <span className={`
+        relative font-semibold
+        ${variant === 'primary' ? 'text-white' : 'text-cyan-400 group-hover:text-cyan-300'}
+      `}>
+        {children}
+      </span>
+    </button>
+  );
+};
+
 // Modal Component
 const CyberModal = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-black/90 border border-cyan-500/50 rounded-lg w-full max-w-4xl p-6">
+      <div className="bg-black/90 border border-cyan-500/50 rounded-lg w-full max-w-4xl p-6 overflow-y-auto max-h-[90vh]">
         <div className="flex justify-between items-center mb-6">
           <h2 className="font-orbitron text-2xl font-bold text-cyan-400">{title}</h2>
-          <button 
+          <CyberButton 
+            variant="outline" 
             onClick={onClose}
-            className="text-cyan-400 hover:text-cyan-300 transition-colors"
+            className="!p-2"
           >
             ✕
-          </button>
+          </CyberButton>
         </div>
         <div className="text-gray-300">
           {children}
@@ -24,6 +77,7 @@ const CyberModal = ({ isOpen, onClose, title, children }) => {
   );
 };
 
+// ComingSoon Modal Component
 const ComingSoonModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   
@@ -32,25 +86,56 @@ const ComingSoonModal = ({ isOpen, onClose }) => {
       <div className="bg-black/90 border border-cyan-500/50 rounded-lg p-6 text-center">
         <h2 className="font-orbitron text-3xl font-bold text-cyan-400 mb-4">Coming Soon</h2>
         <p className="text-cyan-300/70 mb-6">Live trading features will be available in the next update!</p>
-        <button 
+        <CyberButton 
+          variant="outline"
           onClick={onClose}
-          className="px-6 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-lg
-                     text-cyan-400 hover:bg-cyan-400/10 transition-all duration-300"
         >
           Close
-        </button>
+        </CyberButton>
       </div>
     </div>
   );
 };
 
-
-
+// Main App Component
 function App() {
   const [showHowItWorks, setShowHowItWorks] = useState(false);
   const [showChangelog, setShowChangelog] = useState(false);
   const [showMicNotice, setShowMicNotice] = useState(true);
   const [showComingSoon, setShowComingSoon] = useState(false);
+
+  const features = [
+    {
+      title: "Neural Processing",
+      icon: "🧠",
+      description: "BYTE utilizes advanced neural networks to process real-time market data through its Binary Yield Trading Engine (BYTE). This system processes millions of data points to identify optimal trading opportunities."
+    },
+    {
+      title: "Digital Sentiment Analysis",
+      icon: "📊",
+      description: "Advanced pattern recognition algorithms coupled with our Digital Sentiment Layer (DSL) decode market trends and social signals to predict potential price movements before they occur."
+    },
+    {
+      title: "Quantum Risk Management",
+      icon: "🛡️",
+      description: "BYTE's Quantum Risk Assessment Protocol (QRAP) provides real-time portfolio protection. Using quantum-inspired algorithms to maintain optimal risk-reward ratios in volatile conditions."
+    },
+    {
+      title: "BYTE Protocol",
+      icon: "⚡",
+      description: "Our proprietary Binary Interface Technology (BIT) enables seamless communication between users and BYTE's core systems, allowing for intuitive and immediate market responses."
+    },
+    {
+      title: "Memory Optimization",
+      icon: "💾",
+      description: "BYTE's Memory Enhancement Layer (MEL) ensures lightning-fast processing of market data while maintaining perfect accuracy through our distributed memory architecture."
+    },
+    {
+      title: "Binary Synthesis",
+      icon: "🔄",
+      description: "Advanced Binary Synthesis (ABS) combines market analysis, sentiment data, and user inputs into actionable trading strategies with microsecond precision."
+    }
+  ];
 
   return (
     <div className="relative w-screen h-screen bg-black overflow-hidden">
@@ -62,26 +147,26 @@ function App() {
                      hover:drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]
                      transition-all duration-300"
         >
-          S.O.L.O
+          BYTE
         </h1>
         <p className="font-orbitron text-sm text-cyan-300/80 max-w-2xl mx-auto
                     animate-fadeIn
                     drop-shadow-[0_0_8px_rgba(34,211,238,0.2)]"
         >
-          Solana Overview & Learning Oracle - Your AI companion in the Solana memecoin market
+          Binary Yield Trading Engine - Your quantum-powered AI companion in the Solana ecosystem
         </p>
       </div>
 
       {/* Spline Scene */}
       <spline-viewer 
-        url="https://prod.spline.design/XDB7SmWGeOQth8sz/scene.splinecode"
-        style={{ width: '100%', height: '100%' }}
+        url="https://prod.spline.design/Dt6sETE-FruYyOwD/scene.splinecode"
+        className="w-full h-full"
       />
       
       {/* Social Links */}
       <div className="fixed right-4 top-1/4 flex flex-col gap-4 z-20">
         <a 
-          href="https://x.com/SOLOagentAI" 
+          href="https://x.com/ByteAI" 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center justify-center w-14 h-14 rounded-lg 
@@ -89,13 +174,12 @@ function App() {
                    hover:border-cyan-400/60 hover:bg-cyan-400/10
                    transition-all duration-300"
         >
-          {/* X (Twitter) Logo */}
           <svg className="w-7 h-7 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </a>
         <a 
-          href="https://t.me/SOLOagentAI" 
+          href="https://t.me/ByteAI" 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center justify-center w-14 h-14 rounded-lg 
@@ -103,7 +187,6 @@ function App() {
                    hover:border-cyan-400/60 hover:bg-cyan-400/10
                    transition-all duration-300"
         >
-          {/* Telegram Logo */}
           <svg className="w-7 h-7 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.219-.548.219l.18-2.935 5.36-4.82c.23-.23-.054-.349-.354-.14l-6.627 4.174-2.853-.892c-.62-.196-.632-.62.129-.913l11.447-4.407c.52-.196.97.126.766.742z"/>
           </svg>
@@ -111,46 +194,35 @@ function App() {
       </div>
 
       {/* Live Trading Button */}
-      <div className="absolute top-4 right-4 z-20">
-        <button 
+      <div className="absolute top-4 right-4 z-50">
+        <CyberButton 
+          variant="outline"
           onClick={() => setShowComingSoon(true)}
-          className="group relative px-6 py-2 overflow-hidden font-orbitron text-sm rounded-lg 
-                   bg-black/20 border-2 border-cyan-500/30
-                   hover:border-cyan-400/60 transition-all duration-300"
         >
-          <div className="absolute inset-0 w-0 bg-cyan-400/10 transition-all duration-300 ease-out group-hover:w-full"></div>
-          <span className="relative text-cyan-400 group-hover:text-cyan-300">Live Trading</span>
-        </button>
+          Live Trading
+        </CyberButton>
       </div>
 
       {/* Main Action Buttons */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
-        <button 
-          onClick={() => window.open('https://pump.fun/coin/AdL3KhnVnw2JBhmDoPVDd44uXpJnmqNysP2MsxAypump', '_blank')}
-          className="group relative px-8 py-3 overflow-hidden rounded-lg font-orbitron font-medium"
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-50">
+        <CyberButton 
+          variant="primary"
+          onClick={() => window.open('https://pump.fun', '_blank')}
         >
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all"></div>
-          <div className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-cyan-400 to-blue-400"></div>
-          <span className="relative text-black font-semibold">Buy $SOLO</span>
-        </button>
+          Buy $BYTE
+        </CyberButton>
         
-        <button 
+        <CyberButton 
           onClick={() => setShowHowItWorks(true)}
-          className="group relative px-6 py-3 overflow-hidden rounded-lg font-orbitron"
         >
-          <div className="absolute inset-0 border-2 border-cyan-500/30 rounded-lg group-hover:border-cyan-400/60 transition-colors"></div>
-          <div className="absolute inset-0 w-0 bg-cyan-400/10 transition-all duration-300 ease-out group-hover:w-full"></div>
-          <span className="relative text-cyan-400 group-hover:text-cyan-300">How It Works</span>
-        </button>
+          How It Works
+        </CyberButton>
         
-        <button 
+        <CyberButton 
           onClick={() => setShowChangelog(true)}
-          className="group relative px-6 py-3 overflow-hidden rounded-lg font-orbitron"
         >
-          <div className="absolute inset-0 border-2 border-cyan-500/30 rounded-lg group-hover:border-cyan-400/60 transition-colors"></div>
-          <div className="absolute inset-0 w-0 bg-cyan-400/10 transition-all duration-300 ease-out group-hover:w-full"></div>
-          <span className="relative text-cyan-400 group-hover:text-cyan-300">Changelog</span>
-        </button>
+          Changelog
+        </CyberButton>
       </div>
 
       {/* Microphone Permission Notice */}
@@ -165,107 +237,75 @@ function App() {
             <span className="font-semibold text-lg">Enable Microphone Access</span>
           </div>
           <p className="text-cyan-300/70 text-base leading-relaxed">
-            To interact with S.O.L.O using voice commands, please allow microphone access when prompted. This enables real-time voice interaction with your AI companion.
+            To interact with BYTE using voice commands, please allow microphone access when prompted. This enables real-time voice interaction with your AI companion.
           </p>
         </div>
       </div>
 
-      {/* How It Works Modal */}
-<CyberModal 
-  isOpen={showHowItWorks} 
-  onClose={() => setShowHowItWorks(false)}
-  title="How S.O.L.O Works"
->
-  <div className="space-y-8">
-    <p className="text-cyan-400 text-lg text-center mb-8 font-orbitron">
-      S.O.L.O (Solana Overview & Learning Oracle) leverages advanced quantum-neural architectures through its proprietary S.O.L.O Protocol. This revolutionary system enables seamless AI-human interaction while processing multi-dimensional market data across the Solana ecosystem.
-    </p>
-    
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        {
-          title: "Market Analysis",
-          icon: "📊",
-          description: "Utilizes quantum-enhanced neural networks to process market data through our proprietary Quantum Market Analysis Protocol (QMAP). This system analyzes over 1 million data points per second to identify high-probability trading opportunities."
-        },
-        {
-          title: "Social Sentiment",
-          icon: "🌍",
-          description: "Employs advanced Natural Language Understanding (NLU) coupled with our Sentiment Amplification Layer (SAL) to decode complex social patterns and predict memecoin movements before they manifest in the market."
-        },
-        {
-          title: "Risk Management",
-          icon: "🛡️",
-          description: "Implements Dynamic Risk Optimization Protocol (DROP) with real-time portfolio rebalancing. This system uses advanced stochastic modeling to maintain optimal risk-reward ratios in volatile market conditions."
-        },
-        {
-          title: "SOLO Protocol",
-          icon: "🧠",
-          description: "Our revolutionary Voice-Neural Interface (VNI) enables direct neural-level communication between users and S.O.L.O's AI core, allowing for intuitive interaction and real-time decision making."
-        },
-        {
-          title: "Quantum Processing",
-          icon: "⚡",
-          description: "Leverages quantum-inspired algorithms through our Quantum State Optimization (QSO) system to process complex market patterns across multiple dimensional planes simultaneously."
-        },
-        {
-          title: "Neural Synthesis",
-          icon: "🔄",
-          description: "Utilizes Advanced Neural Synthesis (ANS) to combine market analysis, social sentiment, and user interaction into coherent, actionable trading strategies."
-        }
-      ].map((feature, index) => (
-        <div key={index} className="p-6 bg-black/50 border border-cyan-500/30 rounded-lg hover:border-cyan-400/50 transition-colors">
-          <div className="text-4xl mb-4">{feature.icon}</div>
-          <h3 className="text-xl font-bold text-cyan-400 mb-2 font-orbitron">{feature.title}</h3>
-          <p className="text-gray-400">{feature.description}</p>
+      {/* Modals */}
+      <CyberModal 
+        isOpen={showHowItWorks} 
+        onClose={() => setShowHowItWorks(false)}
+        title="How BYTE Works"
+      >
+        <div className="space-y-8">
+          <p className="text-cyan-400 text-lg text-center mb-8 font-orbitron">
+            BYTE (Binary Yield Trading Engine) harnesses the power of quantum computing principles through its proprietary Binary Protocol. This cutting-edge system enables microsecond-precise market analysis while processing multi-dimensional data across the Solana network.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <div key={index} className="p-6 bg-black/50 border border-cyan-500/30 rounded-lg hover:border-cyan-400/50 transition-colors">
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-cyan-400 mb-2 font-orbitron">{feature.title}</h3>
+                <p className="text-gray-400">{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</CyberModal>
+      </CyberModal>
 
-      {/* Changelog Modal */}
-<CyberModal 
-  isOpen={showChangelog} 
-  onClose={() => setShowChangelog(false)}
-  title="Changelog & Updates"
->
-  <div className="space-y-6">
-    <div className="border-l-2 border-cyan-500 pl-4">
-      <h3 className="text-cyan-400 font-bold font-orbitron">Version 1.0.0 (Current)</h3>
-      <ul className="text-gray-400 mt-2 space-y-2">
-        <li>• Initial launch of S.O.L.O AI platform</li>
-        <li>• Voice interaction with S.O.L.O AI implemented</li>
-        <li>• $SOLO token successfully deployed on Solana</li>
-        <li>• Website launch with 3D interactive robot</li>
-        <li>• Basic memecoin market sentiment analysis</li>
-        <li>• Social media integration (Twitter/Telegram)</li>
-        <li>• Voice command recognition system</li>
-      </ul>
-    </div>
-    
-    <div className="border-l-2 border-cyan-500/50 pl-4">
-      <h3 className="text-cyan-400 font-bold font-orbitron">Coming Soon (Version 1.1.0)</h3>
-      <ul className="text-gray-400 mt-2 space-y-2">
-        <li>• Text-based chat interface with S.O.L.O</li>
-        <li>• Enhanced voice interaction capabilities</li>
-        <li>• Live trading integration</li>
-        <li>• Real-time memecoin market analytics</li>
-        <li>• In-depth token analysis dashboard</li>
-        <li>• Automated trading strategies</li>
-        <li>• Advanced social sentiment tracking</li>
-        <li>• Community governance features</li>
-        <li>• Mobile app integration</li>
-      </ul>
-    </div>
-  </div>
-</CyberModal>
-<ComingSoonModal 
+      <CyberModal 
+        isOpen={showChangelog} 
+        onClose={() => setShowChangelog(false)}
+        title="BYTE Updates & Changelog"
+      >
+        <div className="space-y-6">
+          <div className="border-l-2 border-cyan-500 pl-4">
+            <h3 className="text-cyan-400 font-bold font-orbitron">Version 1.0.0 (Current)</h3>
+            <ul className="text-gray-400 mt-2 space-y-2">
+              <li>• Initial release of BYTE AI platform</li>
+              <li>• Neural voice interaction system</li>
+              <li>• $BYTE token deployment on Solana</li>
+              <li>• Interactive quantum visualization interface</li>
+              <li>• Real-time market pattern recognition</li>
+              <li>• Social sentiment analysis integration</li>
+              <li>• Binary command processing system</li>
+            </ul>
+          </div>
+          
+          <div className="border-l-2 border-cyan-500/50 pl-4">
+            <h3 className="text-cyan-400 font-bold font-orbitron">Coming Soon (Version 1.1.0)</h3>
+            <ul className="text-gray-400 mt-2 space-y-2">
+              <li>• Advanced neural chat interface</li>
+              <li>• Enhanced quantum processing capabilities</li>
+              <li>• Live trading integration</li>
+              <li>• Real-time market analytics dashboard</li>
+              <li>• Binary pattern recognition system</li>
+              <li>• Automated trading protocols</li>
+              <li>• Advanced risk management features</li>
+              <li>• Decentralized governance integration</li>
+              <li>• Mobile quantum interface</li>
+            </ul>
+          </div>
+        </div>
+      </CyberModal>
+
+      <ComingSoonModal 
         isOpen={showComingSoon} 
         onClose={() => setShowComingSoon(false)} 
       />
     </div>
-  );  
+  );
 }
-
 export default App;
