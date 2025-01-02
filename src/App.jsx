@@ -170,7 +170,7 @@ function App() {
       {/* Header Buttons */}
 <div className="absolute top-4 right-4 z-50 flex items-center gap-4">
   <a 
-    href="https://x.com/ByteSolanaAI" 
+    href="https://x.com/AIAgentByte" 
     target="_blank" 
     rel="noopener noreferrer"
     className="flex items-center justify-center px-6 py-3 rounded-lg 
