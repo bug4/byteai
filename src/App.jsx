@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DevChat from './DevChat';
 
 // CyberButton Component
 const CyberButton = ({ children, onClick, variant = 'default', className = '' }) => {
@@ -148,7 +149,7 @@ function App() {
                  hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.6)]
                  transition-all duration-300"
   >
-    BYTE
+    AGENT BYTE
   </h1>
   <p className="font-orbitron text-lg text-cyan-300/90 max-w-3xl mx-auto
               backdrop-blur-sm py-2 px-4 rounded-lg
@@ -162,7 +163,7 @@ function App() {
 
       {/* Spline Scene */}
       <spline-viewer 
-        url="https://prod.spline.design/Dt6sETE-FruYyOwD/scene.splinecode"
+        url="https://prod.spline.design/6PY6W7n8ynjDRghk/scene.splinecode"
         className="w-full h-full"
       />
 
@@ -232,6 +233,8 @@ function App() {
           </p>
         </div>
       </div>
+
+      <DevChat />
 
       {/* Modals */}
       <CyberModal 
