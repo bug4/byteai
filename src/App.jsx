@@ -192,7 +192,7 @@ function App() {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-50">
         <CyberButton 
           variant="primary"
-          onClick={() => window.open('https://pump.fun/', '_blank')}
+          onClick={() => window.open('https://pump.fun/coin/HvbS71mRk6EGUYiLvs8GY6DRotssBndYQysDprjLpump', '_blank')}
         >
           Buy $SYNT
         </CyberButton>
