@@ -102,106 +102,99 @@ const ComingSoonModal = ({ isOpen, onClose }) => {
 function App() {
   const [showHowItWorks, setShowHowItWorks] = useState(false);
   const [showChangelog, setShowChangelog] = useState(false);
-  const [showMicNotice, setShowMicNotice] = useState(true);
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   const features = [
     {
-      title: "Neural Processing",
+      title: "System Neural Core",
       icon: "🧠",
-      description: "BYTE utilizes advanced neural networks to process real-time market data through its Binary Yield Trading Engine (BYTE). This system processes millions of data points to identify optimal trading opportunities."
+      description: "SYNT's advanced neural architecture processes market data through its System Yield Neural Network. This core system analyzes complex market patterns to optimize trading strategies."
     },
     {
-      title: "Digital Sentiment Analysis",
-      icon: "📊",
-      description: "Advanced pattern recognition algorithms coupled with our Digital Sentiment Layer (DSL) decode market trends and social signals to predict potential price movements before they occur."
+      title: "Yield Optimization Protocol",
+      icon: "📈",
+      description: "Advanced yield farming algorithms coupled with our Neural Yield Layer (NYL) identify and capitalize on the most profitable DeFi opportunities across the Solana ecosystem."
     },
     {
-      title: "Quantum Risk Management",
+      title: "Neural Risk Assessment",
       icon: "🛡️",
-      description: "BYTE's Quantum Risk Assessment Protocol (QRAP) provides real-time portfolio protection. Using quantum-inspired algorithms to maintain optimal risk-reward ratios in volatile conditions."
+      description: "SYNT's Neural Risk Evaluation System (NRES) provides continuous portfolio monitoring and protection, using AI to maintain optimal risk-adjusted returns."
     },
     {
-      title: "BYTE Protocol",
+      title: "SYNT Protocol",
       icon: "⚡",
-      description: "Our proprietary Binary Interface Technology (BIT) enables seamless communication between users and BYTE's core systems, allowing for intuitive and immediate market responses."
+      description: "Our proprietary System Neural Technology enables seamless integration with DeFi protocols, allowing for automated yield optimization and instant market adaptation."
     },
     {
-      title: "Memory Optimization",
-      icon: "💾",
-      description: "BYTE's Memory Enhancement Layer (MEL) ensures lightning-fast processing of market data while maintaining perfect accuracy through our distributed memory architecture."
-    },
-    {
-      title: "Binary Synthesis",
+      title: "Neural Learning Engine",
       icon: "🔄",
-      description: "Advanced Binary Synthesis (ABS) combines market analysis, sentiment data, and user inputs into actionable trading strategies with microsecond precision."
+      description: "SYNT's Neural Enhancement Protocol (NEP) continuously learns from market conditions, improving strategy execution through adaptive AI algorithms."
+    },
+    {
+      title: "Systematic Yield Generation",
+      icon: "💎",
+      description: "Advanced Yield Generation (AYG) combines multiple DeFi strategies into a unified approach, maximizing returns through AI-driven portfolio management."
     }
   ];
 
   return (
     <div className="relative w-screen h-screen bg-black overflow-hidden">
       {/* Title Section */}
-<div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 text-center w-full px-4">
-  <h1 className="font-orbitron text-8xl font-bold mb-4
-                 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text
-                 animate-pulse
-                 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]
-                 hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.6)]
-                 transition-all duration-300"
-  >
-    AGENT BYTE
-  </h1>
-  <p className="font-orbitron text-lg text-cyan-300/90 max-w-3xl mx-auto
-              backdrop-blur-sm py-2 px-4 rounded-lg
-              bg-black/20 border-2 border-cyan-500/30
-              animate-fadeIn
-              drop-shadow-[0_0_12px_rgba(34,211,238,0.3)]"
-  >
-    Binary Yield Trading Engine - Your quantum-powered AI companion in the Solana ecosystem
-  </p>
-</div>
-
-      {/* Spline Scene */}
-      <spline-viewer 
-        url="https://prod.spline.design/6PY6W7n8ynjDRghk/scene.splinecode"
-        className="w-full h-full"
-      />
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 text-center w-full px-4">
+        <h1 className="font-orbitron text-8xl font-bold mb-4
+                     bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text
+                     animate-pulse
+                     drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]
+                     hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.6)]
+                     transition-all duration-300"
+        >
+          AGENT SYNT
+        </h1>
+        <p className="font-orbitron text-lg text-cyan-300/90 max-w-3xl mx-auto
+                    backdrop-blur-sm py-2 px-4 rounded-lg
+                    bg-black/20 border-2 border-cyan-500/30
+                    animate-fadeIn
+                    drop-shadow-[0_0_12px_rgba(34,211,238,0.3)]"
+        >
+          System Yield Neural Trader - Your AI-powered yield optimization companion in the Solana ecosystem
+        </p>
+      </div>
 
       {/* Header Buttons */}
-<div className="absolute top-4 right-4 z-50 flex items-center gap-4">
-  <a 
-    href="https://x.com/AIAgentByte" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="flex items-center justify-center px-6 py-3 rounded-lg 
-             bg-black/40 border-2 border-cyan-500/50 
-             hover:border-cyan-400 hover:bg-cyan-950/30
-             transition-all duration-300
-             backdrop-blur-sm
-             shadow-[0_0_10px_rgba(34,211,238,0.2)]
-             hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]
-             font-orbitron"
-  >
-    <svg className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-    </svg>
-  </a>
-  
-  <CyberButton 
-    variant="outline"
-    onClick={() => setShowComingSoon(true)}
-  >
-    Live Trading
-  </CyberButton>
-</div>
+      <div className="absolute top-4 right-4 z-50 flex items-center gap-4">
+        <a 
+          href="https://x.com/AgentSYNT" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center justify-center px-6 py-3 rounded-lg 
+                   bg-black/40 border-2 border-cyan-500/50 
+                   hover:border-cyan-400 hover:bg-cyan-950/30
+                   transition-all duration-300
+                   backdrop-blur-sm
+                   shadow-[0_0_10px_rgba(34,211,238,0.2)]
+                   hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]
+                   font-orbitron"
+        >
+          <svg className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        
+        <CyberButton 
+          variant="outline"
+          onClick={() => setShowComingSoon(true)}
+        >
+          Yield Dashboard
+        </CyberButton>
+      </div>
 
       {/* Main Action Buttons */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-50">
         <CyberButton 
           variant="primary"
-          onClick={() => window.open('https://pump.fun/coin/58XPiPU9JZF9Y27SPcX6pc2vjWmEm4xZ1L7GH6Lmpump', '_blank')}
+          onClick={() => window.open('https://pump.fun/', '_blank')}
         >
-          Buy $BYTE
+          Buy $SYNT
         </CyberButton>
         
         <CyberButton 
@@ -218,33 +211,39 @@ function App() {
       </div>
 
       {/* Microphone Permission Notice */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 max-w-md">
-        <div className="bg-black/30 backdrop-blur-sm border border-cyan-500/30 rounded-lg p-6
-                      shadow-[0_0_15px_rgba(34,211,238,0.1)]
-                      hover:border-cyan-400/50 transition-all duration-300">
+<div className="absolute left-4 top-1/2 -translate-y-1/2 max-w-md z-20">
+  <div className="bg-black/30 backdrop-blur-sm border border-cyan-500/30 rounded-lg p-6
+                shadow-[0_0_15px_rgba(34,211,238,0.1)]
+                hover:border-cyan-400/50 transition-all duration-300">
           <div className="flex items-center gap-3 text-cyan-400 mb-4 font-orbitron">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
             </svg>
-            <span className="font-semibold text-lg">Enable Microphone Access</span>
+            <span className="font-semibold text-lg">Enable Voice Commands</span>
           </div>
           <p className="text-cyan-300/70 text-base leading-relaxed">
-            To interact with BYTE using voice commands, please allow microphone access when prompted. This enables real-time voice interaction with your AI companion.
+            To interact with SYNT using voice commands, please allow microphone access when prompted. This enables real-time voice interaction with your AI yield optimization companion.
           </p>
         </div>
       </div>
 
+      {/* Spline Scene */}
+      <spline-viewer 
+        url="https://prod.spline.design/6PY6W7n8ynjDRghk/scene.splinecode"
+        className="w-full h-full"
+      />
+
       <DevChat />
 
-      {/* Modals */}
+      {/* Modal Content Updates */}
       <CyberModal 
         isOpen={showHowItWorks} 
         onClose={() => setShowHowItWorks(false)}
-        title="How BYTE Works"
+        title="How SYNT Works"
       >
         <div className="space-y-8">
           <p className="text-cyan-400 text-lg text-center mb-8 font-orbitron">
-            BYTE (Binary Yield Trading Engine) harnesses the power of quantum computing principles through its proprietary Binary Protocol. This cutting-edge system enables microsecond-precise market analysis while processing multi-dimensional data across the Solana network.
+            SYNT (System Yield Neural Trader) leverages advanced artificial intelligence to optimize yield farming strategies across the Solana ecosystem. Our neural networks continuously analyze market conditions to maximize returns while minimizing risk.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -262,34 +261,34 @@ function App() {
       <CyberModal 
         isOpen={showChangelog} 
         onClose={() => setShowChangelog(false)}
-        title="BYTE Updates & Changelog"
+        title="SYNT Updates & Changelog"
       >
         <div className="space-y-6">
           <div className="border-l-2 border-cyan-500 pl-4">
             <h3 className="text-cyan-400 font-bold font-orbitron">Version 1.0.0 (Current)</h3>
             <ul className="text-gray-400 mt-2 space-y-2">
-              <li>• Initial release of BYTE AI platform</li>
+              <li>• Initial release of SYNT AI platform</li>
               <li>• Neural voice interaction system</li>
-              <li>• $BYTE token deployment on Solana</li>
-              <li>• Interactive quantum visualization interface</li>
-              <li>• Real-time market pattern recognition</li>
-              <li>• Social sentiment analysis integration</li>
-              <li>• Binary command processing system</li>
+              <li>• $SYNT token deployment on Solana</li>
+              <li>• Interactive yield optimization interface</li>
+              <li>• Real-time DeFi opportunity detection</li>
+              <li>• Multi-protocol yield analysis</li>
+              <li>• Neural strategy execution system</li>
             </ul>
           </div>
           
           <div className="border-l-2 border-cyan-500/50 pl-4">
             <h3 className="text-cyan-400 font-bold font-orbitron">Coming Soon (Version 1.1.0)</h3>
             <ul className="text-gray-400 mt-2 space-y-2">
-              <li>• Advanced neural chat interface</li>
-              <li>• Enhanced quantum processing capabilities</li>
-              <li>• Live trading integration</li>
-              <li>• Real-time market analytics dashboard</li>
-              <li>• Binary pattern recognition system</li>
-              <li>• Automated trading protocols</li>
-              <li>• Advanced risk management features</li>
-              <li>• Decentralized governance integration</li>
-              <li>• Mobile quantum interface</li>
+              <li>• Advanced neural yield optimization</li>
+              <li>• Enhanced portfolio management</li>
+              <li>• Automated yield farming</li>
+              <li>• Real-time analytics dashboard</li>
+              <li>• Cross-chain yield opportunities</li>
+              <li>• Risk-adjusted return optimization</li>
+              <li>• Advanced position management</li>
+              <li>• DAO governance integration</li>
+              <li>• Mobile yield dashboard</li>
             </ul>
           </div>
         </div>
@@ -302,4 +301,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
